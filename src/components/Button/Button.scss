@@ -1,0 +1,19 @@
+@import 'src/styles/colors';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 36px;
+  margin-left: 10px;
+  color: $secondary-color;
+  background-color: $primary-color;
+  border: none;
+  cursor: pointer;
+  //transition: background-color 0.3s, color 0.3s;
+  &:hover, &--isActive {
+    color: $primary-color;
+    background-color: $secondary-color;
+  }
+}

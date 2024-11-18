@@ -1,0 +1,13 @@
+.text-art {
+  font-family: monospace;
+  font-size: 8px;
+  line-height: 1;
+  color: white;
+  overflow: auto;
+  padding: 1rem;
+  white-space: pre;
+  cursor: pointer;
+  &:hover {
+    color: #0000CC;
+  }
+}

@@ -1,0 +1,82 @@
+@import "src/styles/colors";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font: bolder 16px "Trebuchet MS", Verdana, sans-serif;
+	text-transform: uppercase;
+}
+
+.main {
+	display: flex;
+	background-color: $secondary-color;
+}
+
+.content {
+	display: flex;
+	margin: 8px;
+	width: 100%;
+	min-height: calc(100vh - 132px);
+	border: solid 3px black;
+	&__long {
+		display: flex;
+		justify-content: flex-start;
+		padding-top: 80px;
+		padding-left: 40px;
+		flex-flow: column;
+		width: 70%;
+		border-right: solid 3px black;
+	}
+	&__short {
+		display: flex;
+		justify-content: flex-start;
+		flex-flow: column;
+		width: 30%;
+	}
+
+	&__description {
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+		padding: 40px 0;
+		table {
+			display: flex;
+			flex-flow: column;
+			justify-content: flex-end;
+
+			tr {
+				display: flex;
+				//justify-content: space-between;
+			}
+			td {
+				display: flex;
+				padding: 4px;
+				width: 50%;
+			}
+		}
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-bottom: solid 3px black;
+		height: 80px;
+	}
+}
+
+.menu {
+	width: 100%;
+	padding: 10px;
+
+	&__item {
+		color: $primary-color;
+		cursor: pointer;
+	}
+	&__item:hover,
+	&__item--active {
+		color: $white-color;
+	}
+}

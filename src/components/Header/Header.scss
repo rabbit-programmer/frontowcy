@@ -1,0 +1,9 @@
+@import '../../styles/colors';
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: $primary-color;
+  width: 100%;
+  height: 36px;
+}
