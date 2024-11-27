@@ -1,9 +1,9 @@
 enum GlobalMenuEnum {
-    HOME,
-    SKILLS,
-    EXPERIENCE,
-    SERVICES,
-    CONTACT
+	CV,
+	STOPWATCH,
+	EXPERIENCE,
+	SERVICES,
+	CONTACT,
 }
 
-export {GlobalMenuEnum}
+export { GlobalMenuEnum };

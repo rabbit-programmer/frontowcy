@@ -17,50 +17,44 @@ const BasicTemplate = ({ children }: Props) => {
 		(state: RootState) => state.globalMenuSelector.option
 	);
 	const dispatch = useDispatch();
-	console.log(option);
 
-	const linkedin =
-		"" +
-		"  ##      #           #                #     #          \n" +
-		"   #                  #  #             #                \n" +
-		"   #     ##    ###    # #     ##     ###    ##    ###   \n" +
-		"   #      #    #  #   ###    # ##   #  #     #    #  #  \n" +
-		"   #      #    #  #   #  #   ##     #  #     #    #  #  \n" +
-		"  ###    ###   #  #   #  #    ###    ###    ###   #  #  \n";
+	const github = ` 
+ ██████  ██ ████████ ██   ██ ██    ██ ██████  
+██       ██    ██    ██   ██ ██    ██ ██   ██ 
+██   ███ ██    ██    ███████ ██    ██ ██████  
+██    ██ ██    ██    ██   ██ ██    ██ ██   ██ 
+ ██████  ██    ██    ██   ██  ██████  ██████ 
+	`;
+
 	return (
 		<>
 			<Header>
 				<Button
-					isActive={option === GlobalMenuEnum.HOME}
-					onClick={() => dispatch(selectOption(GlobalMenuEnum.HOME))}>
-					Home
+					isActive={option === GlobalMenuEnum.CV}
+					onClick={() => dispatch(selectOption(GlobalMenuEnum.CV))}>
+					CV PROJECT
 				</Button>
 				<Button
-					isActive={option === GlobalMenuEnum.SKILLS}
-					onClick={() => dispatch(selectOption(GlobalMenuEnum.SKILLS))}>
-					Skills
+					isActive={option === GlobalMenuEnum.STOPWATCH}
+					onClick={() => dispatch(selectOption(GlobalMenuEnum.STOPWATCH))}>
+					StopWatch PROJECT
 				</Button>
 				<Button
 					isActive={option === GlobalMenuEnum.EXPERIENCE}
 					onClick={() => dispatch(selectOption(GlobalMenuEnum.EXPERIENCE))}>
-					Experience
+					FOOTBALAPP PROJECT
 				</Button>
 				<Button
 					isActive={option === GlobalMenuEnum.SERVICES}
 					onClick={() => dispatch(selectOption(GlobalMenuEnum.SERVICES))}>
-					Services
-				</Button>
-				<Button
-					isActive={option === GlobalMenuEnum.CONTACT}
-					onClick={() => dispatch(selectOption(GlobalMenuEnum.CONTACT))}>
-					Contact
+					CARSHOP PROJECT
 				</Button>
 			</Header>
 			<main className='main'>
 				<div className='content'>{children}</div>
 			</main>
 			<Footer>
-				<TextArt text={linkedin} />
+				<TextArt text={github} />
 			</Footer>
 		</>
 	);
