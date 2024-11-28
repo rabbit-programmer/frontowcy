@@ -1,4 +1,4 @@
-import { PlayerInterface } from "../interfaces/playerInterface";
+import { PlayerInterface, RequestPlayer } from "../interfaces/playerInterface";
 import { TeamInterface } from "../interfaces/teamInterface";
 
 class FootballApiService {
@@ -14,12 +14,34 @@ class FootballApiService {
 			throw new Error((e as Error).message);
 		}
 	}
-	async createPlayer(): Promise<void> {}
-	async editPlayer(): Promise<void> {}
-	async getAllTeams(): Promise<void> {
+	async createPlayer(player: RequestPlayer): Promise<void> {
+		try {
+			const response = await fetch(`${this.API_URL}/players`, {
+				method: "POST",
+				body: JSON.stringify(player),
+			});
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
+	async editPlayer(player: RequestPlayer): Promise<PlayerInterface> {
+		try {
+			const response = await fetch(`${this.API_URL}/players/${player.id}`, {
+				method: "PATCH",
+				body: JSON.stringify(player),
+			});
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
+	async getAllTeams(): Promise<TeamInterface[]> {
 		try {
 			const response = await fetch(`${this.API_URL}/teams`);
-			const teams: Player[] = await response.json();
+			const teams: TeamInterface[] = await response.json();
 			return teams;
 		} catch (e: unknown) {
 			this.logApiError(e as Error);

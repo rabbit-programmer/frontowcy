@@ -4,3 +4,5 @@ export interface PlayerInterface {
 	lastName: string;
 	teamId: string;
 }
+
+export type RequestPlayer = Omit<PlayerInterface, "teamId">;

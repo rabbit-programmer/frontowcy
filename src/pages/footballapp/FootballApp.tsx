@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { footballApiService } from "../../services/footballApiService";
-import { PlayerItem } from "./components/players/PlayerItem";
 import { PlayerList } from "./components/players/PlayersList";
 
 const FootballApp = () => {
