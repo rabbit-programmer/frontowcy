@@ -1,7 +1,7 @@
 enum GlobalMenuEnum {
 	CV,
 	STOPWATCH,
-	EXPERIENCE,
+	FOOTBALLAPP,
 	SERVICES,
 	CONTACT,
 }

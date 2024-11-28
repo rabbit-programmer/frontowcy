@@ -1,0 +1,55 @@
+{
+	"players": [
+		{
+			"id": "1",
+			"firstName": "Robert",
+			"lastName": "Lewandowski",
+			"teamId": "1"
+		},
+		{
+			"id": "2",
+			"firstName": "Wojciech",
+			"lastName": "Szczesny",
+			"teamId": null
+		},
+		{
+			"id": "3",
+			"firstName": "Cristiano",
+			"lastName": "Ronaldo",
+			"teamId": "3"
+		},
+		{ "id": "4", "firstName": "Leo", "lastName": "Messi", "teamId": null }
+	],
+	"teams": [
+		{
+			"id": "1",
+			"name": "FC Barcelona",
+			"startYear": "2020",
+			"city": "Barcelona"
+		},
+		{
+			"id": "2",
+			"name": "Manchester United",
+			"startYear": "2006",
+			"city": "Manchester"
+		},
+		{
+			"id": "3",
+			"name": "Real Madrid",
+			"startYear": "1996",
+			"city": "Madrid"
+		}
+	],
+	"games": [
+		{
+			"id": "1",
+			"date": "20/11/2024",
+			"homeTeamId": "1",
+			"awayTeamId": "2",
+			"city": "Madrid",
+			"homeTeamGoals": 2,
+			"awauTeamGoals": 2,
+			"timeInMinutes": 94
+		}
+	]
+}

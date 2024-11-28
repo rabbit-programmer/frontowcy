@@ -40,8 +40,8 @@ const BasicTemplate = ({ children }: Props) => {
 					StopWatch PROJECT
 				</Button>
 				<Button
-					isActive={option === GlobalMenuEnum.EXPERIENCE}
-					onClick={() => dispatch(selectOption(GlobalMenuEnum.EXPERIENCE))}>
+					isActive={option === GlobalMenuEnum.FOOTBALLAPP}
+					onClick={() => dispatch(selectOption(GlobalMenuEnum.FOOTBALLAPP))}>
 					FOOTBALAPP PROJECT
 				</Button>
 				<Button
