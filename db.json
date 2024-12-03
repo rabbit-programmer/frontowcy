@@ -1,95 +1,80 @@
 {
-  "players": [
-    {
-      "id": "1",
-      "firstName": "Robert",
-      "lastName": "Lewandowski",
-      "teamId": "1"
-    },
-    {
-      "id": "2",
-      "firstName": "Wojciech",
-      "lastName": "Szczesny",
-      "teamId": null
-    },
-    {
-      "id": "3",
-      "firstName": "Cristiano",
-      "lastName": "Ronaldo",
-      "teamId": "3"
-    },
-    {
-      "id": "4",
-      "firstName": "Leo",
-      "lastName": "Messi",
-      "teamId": null
-    },
-    {
-      "id": "",
-      "firstName": "Roberto",
-      "lastName": "carlos"
-    },
-    {
-      "id": "",
-      "firstName": "MACIEJ",
-      "lastName": "RYBUS"
-    },
-    {
-      "id": "4d87",
-      "firstName": "waldemar",
-      "lastName": "sobota"
-    },
-    {
-      "id": "8f69",
-      "firstName": "kamil",
-      "lastName": "kosowski"
-    },
-    {
-      "id": "f8b5",
-      "firstName": "kamil",
-      "lastName": "kosowski"
-    },
-    {
-      "id": "b401",
-      "firstName": "hello",
-      "lastName": "helmans"
-    },
-    {
-      "id": "08ed",
-      "firstName": "safsf",
-      "lastName": "ddffdfddfdfdf"
-    }
-  ],
-  "teams": [
-    {
-      "id": "1",
-      "name": "FC Barcelona",
-      "startYear": "2020",
-      "city": "Barcelona"
-    },
-    {
-      "id": "2",
-      "name": "Manchester United",
-      "startYear": "2006",
-      "city": "Manchester"
-    },
-    {
-      "id": "3",
-      "name": "Real Madrid",
-      "startYear": "1996",
-      "city": "Madrid"
-    }
-  ],
-  "games": [
-    {
-      "id": "1",
-      "date": "20/11/2024",
-      "homeTeamId": "1",
-      "awayTeamId": "2",
-      "city": "Madrid",
-      "homeTeamGoals": 2,
-      "awauTeamGoals": 2,
-      "timeInMinutes": 94
-    }
-  ]
+	"players": [
+		{
+			"id": "1",
+			"firstName": "Robert",
+			"lastName": "Lewandowski",
+			"teamId": "1"
+		},
+		{
+			"id": "2",
+			"firstName": "Wojciech",
+			"lastName": "Szczesny",
+			"teamId": null
+		},
+		{
+			"id": "3",
+			"firstName": "Cristiano",
+			"lastName": "Ronaldo",
+			"teamId": "3"
+		},
+		{
+			"id": "4",
+			"firstName": "Leo",
+			"lastName": "Messi",
+			"teamId": null
+		},
+		{
+			"id": "",
+			"firstName": "Roberto",
+			"lastName": "carlos"
+		},
+		{
+			"id": "",
+			"firstName": "MACIEJ",
+			"lastName": "RYBUS"
+		},
+		{
+			"id": "4d87",
+			"firstName": "waldemar",
+			"lastName": "sobota"
+		},
+		{
+			"id": "8f69",
+			"firstName": "kamil",
+			"lastName": "kosowski"
+		}
+	],
+	"teams": [
+		{
+			"id": "1",
+			"name": "FC Barcelona",
+			"startYear": "2020",
+			"city": "Barcelona"
+		},
+		{
+			"id": "2",
+			"name": "Manchester United",
+			"startYear": "2006",
+			"city": "Manchester"
+		},
+		{
+			"id": "3",
+			"name": "Real Madrid",
+			"startYear": "1996",
+			"city": "Madrid"
+		}
+	],
+	"games": [
+		{
+			"id": "1",
+			"date": "20/11/2024",
+			"homeTeamId": "1",
+			"awayTeamId": "2",
+			"city": "Madrid",
+			"homeTeamGoals": 2,
+			"awayTeamGoals": 2,
+			"timeInMinutes": 94
+		}
+	]
 }

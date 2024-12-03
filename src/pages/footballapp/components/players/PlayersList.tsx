@@ -3,6 +3,7 @@ import { ModalPortal } from "../../../../components/Portal/Portal";
 import { PlayerInterface } from "../../../../interfaces/playerInterface";
 import { PlayerForm } from "./PlayerForm";
 import { PlayerItem } from "./PlayerItem";
+import { LinkButton } from "../../../../components/Form/LinkButton";
 
 interface PlayerList {
 	players: PlayerInterface[];
@@ -10,11 +11,16 @@ interface PlayerList {
 
 const PlayerList = ({ players }: PlayerList) => {
 	const [isOpenForm, setIsOpenForm] = useState(false);
-
 	return (
 		<div className='content__short'>
 			<div className='content__title'>
-				Players <div onClick={() => setIsOpenForm(true)}>[+ADD]</div>
+				Players list
+				<LinkButton
+					onClick={() => {
+						setIsOpenForm(true);
+					}}>
+					[Add player]
+				</LinkButton>
 			</div>
 			<div className='content__description'>
 				<div className='description'>

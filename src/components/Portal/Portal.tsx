@@ -33,7 +33,6 @@ export const ModalPortal = ({ title, isOpen, onClose, children }) => {
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
-		// background-color: #CCCCCC;
 		border-bottom: solid 3px black;
 		padding: 20px;
 		width: 100%;
@@ -43,7 +42,6 @@ export const ModalPortal = ({ title, isOpen, onClose, children }) => {
 		flex-flow: column;
 		align-items: justify-content;
 		justify-content: center;
-		// border-bottom: solid 3px black;
 		padding: 20px;
 		width: 100%;
 	`;
