@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { PlayerInterface } from "../../../../interfaces/playerInterface";
 import { footballApiService } from "../../../../services/footballApiService";
+import { PlayerForm } from "./PlayerForm";
 
 interface PlayerItem {
 	player: PlayerInterface;
