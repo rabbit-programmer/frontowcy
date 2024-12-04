@@ -4,8 +4,10 @@ import { footballApiService } from "../../../../services/footballApiService";
 import { TextInput } from "../../../../components/Form/TextInput";
 import { Button } from "../../../../components/Form/Button";
 import styled from "styled-components";
+import { useQueryClient } from "@tanstack/react-query";
+import { FootballCacheKeysEnum } from "../../../../enums/FootballCacheKeysEnum";
 
-export const PlayerForm = ({ mode }: { mode: string }) => {
+export const PlayerForm = ({ mode, onClose, player = null }) => {
 	const StyledForm = styled.form`
 		display: flex;
 		flex-flow: column;
@@ -19,34 +21,55 @@ export const PlayerForm = ({ mode }: { mode: string }) => {
 		}
 	`;
 
+	const queryClient = useQueryClient();
 	const { register, handleSubmit } = useForm<RequestPlayer>();
-	const onSubmit: SubmitHandler<RequestPlayer> = (data) =>
-		mode === "create"
-			? footballApiService.createPlayer(data)
-			: footballApiService.editPlayer(data);
+	const onSubmit: SubmitHandler<RequestPlayer> = async (data) => {
+		if (mode === "create") {
+			await footballApiService.createPlayer(data);
+		} else {
+			await footballApiService.editPlayer(data);
+		}
+
+		queryClient.invalidateQueries({
+			queryKey: [FootballCacheKeysEnum.LIST_PLAYERS],
+		});
+
+		onClose();
+	};
 
 	return (
 		<StyledForm onSubmit={handleSubmit(onSubmit)}>
 			{mode === "edit" && (
 				<TextInput
-					hidden
-					{...register("id")}
+					type='hidden'
+					{...register("id", {
+						required: true,
+						value: player?.id,
+					})}
 				/>
 			)}
 			<div className='field'>
 				<label>First name</label>
 				<TextInput
-					{...register("firstName", { required: true, minLength: 5 })}
+					{...register("firstName", {
+						required: true,
+						minLength: 1,
+						value: player?.firstName,
+					})}
 				/>
 			</div>
 			<div className='field'>
 				<label>Last name</label>
 				<TextInput
-					{...register("lastName", { required: true, minLength: 5 })}
+					{...register("lastName", {
+						required: true,
+						minLength: 1,
+						value: player?.lastName,
+					})}
 				/>
 			</div>
 			<div className='field'>
-				<Button type='submit'>add player</Button>
+				<Button type='submit'>Save</Button>
 			</div>
 		</StyledForm>
 	);

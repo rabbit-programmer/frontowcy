@@ -1,16 +1,24 @@
 import { useState } from "react";
 import { ModalPortal } from "../../../../components/Portal/Portal";
-import { PlayerInterface } from "../../../../interfaces/playerInterface";
 import { PlayerForm } from "./PlayerForm";
 import { PlayerItem } from "./PlayerItem";
 import { LinkButton } from "../../../../components/Form/LinkButton";
+import { useQuery } from "@tanstack/react-query";
+import { footballApiService } from "../../../../services/footballApiService";
+import { FootballCacheKeysEnum } from "../../../../enums/FootballCacheKeysEnum";
 
-interface PlayerList {
-	players: PlayerInterface[];
-}
-
-const PlayerList = ({ players }: PlayerList) => {
+const PlayerList = () => {
 	const [isOpenForm, setIsOpenForm] = useState(false);
+	const handleClose = () => setIsOpenForm(false);
+	const { isPending, error, data } = useQuery({
+		queryKey: [FootballCacheKeysEnum.LIST_PLAYERS],
+		queryFn: () => footballApiService.getAllPlayers(),
+	});
+
+	if (isPending) return "Loading...";
+
+	if (error) return "An error has occurred: " + error.message;
+
 	return (
 		<div className='content__short'>
 			<div className='content__title'>
@@ -26,7 +34,7 @@ const PlayerList = ({ players }: PlayerList) => {
 				<div className='description'>
 					<div className='description__data'>
 						<ul>
-							{players.map((player) => (
+							{data.map((player) => (
 								<li key={player.id}>
 									<PlayerItem player={player} />
 								</li>
@@ -38,8 +46,11 @@ const PlayerList = ({ players }: PlayerList) => {
 			<ModalPortal
 				title={"Add player"}
 				isOpen={isOpenForm}
-				onClose={() => setIsOpenForm(false)}>
-				<PlayerForm mode='create' />
+				onClose={handleClose}>
+				<PlayerForm
+					mode='create'
+					onClose={handleClose}
+				/>
 			</ModalPortal>
 		</div>
 	);
