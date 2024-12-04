@@ -38,6 +38,17 @@ class FootballApiService {
 			throw new Error((e as Error).message);
 		}
 	}
+	async deletePlayer(player: RequestPlayer): Promise<PlayerInterface> {
+		try {
+			const response = await fetch(`${this.API_URL}/players/${player.id}`, {
+				method: "DELETE",
+			});
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
 	async getAllTeams(): Promise<TeamInterface[]> {
 		try {
 			const response = await fetch(`${this.API_URL}/teams`);

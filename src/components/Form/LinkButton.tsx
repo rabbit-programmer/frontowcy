@@ -1,29 +1,39 @@
 import { forwardRef } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const LinkButton = forwardRef(({ children, ...props }, ref) => {
-	const StyledLink = styled.a`
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: #0000cc;
-		border: none;
-		padding: 10px;
-		cursor: pointer;
-		&:hover,
-		&:active,
-		&:focus {
-			color: #ffffff;
+export const LinkButton = forwardRef(
+	({ primary = true, children, ...props }, ref) => {
+		const StyledLink = styled.a<{ $primary?: boolean }>`
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			${(props) =>
+				props.$primary
+					? css`
+							color: #0000cc;
+					  `
+					: css`
+							color: black;
+					  `}
 			border: none;
-			outline: none;
-		}
-	`;
+			padding: 10px;
+			cursor: pointer;
+			&:hover,
+			&:active,
+			&:focus {
+				color: #ffffff;
+				border: none;
+				outline: none;
+			}
+		`;
 
-	return (
-		<StyledLink
-			{...props}
-			ref={ref}>
-			{children}
-		</StyledLink>
-	);
-});
+		return (
+			<StyledLink
+				$primary={primary}
+				{...props}
+				ref={ref}>
+				{children}
+			</StyledLink>
+		);
+	}
+);

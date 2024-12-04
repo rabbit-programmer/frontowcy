@@ -7,47 +7,10 @@
       "teamId": "1"
     },
     {
-      "id": "2",
-      "firstName": "Wojciech",
-      "lastName": "Szczesny",
-      "teamId": null
-    },
-    {
       "id": "3",
       "firstName": "Cristiano",
       "lastName": "Ronaldo",
       "teamId": "3"
-    },
-    {
-      "id": "4",
-      "firstName": "Leo",
-      "lastName": "Messi",
-      "teamId": null
-    },
-    {
-      "id": "",
-      "firstName": "Roberto",
-      "lastName": "carlos"
-    },
-    {
-      "id": "",
-      "firstName": "MACIEJ",
-      "lastName": "RYBUS"
-    },
-    {
-      "id": "4d87",
-      "firstName": "waldemar",
-      "lastName": "sobota"
-    },
-    {
-      "id": "8f69",
-      "firstName": "kamil",
-      "lastName": "kosowski"
-    },
-    {
-      "id": "b1e9",
-      "firstName": "Maciej",
-      "lastName": "zurawski"
     }
   ],
   "teams": [

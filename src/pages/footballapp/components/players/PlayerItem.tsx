@@ -23,8 +23,10 @@ const PlayerItem = ({ player }: PlayerItem) => {
 		team = data || "";
 	}
 
-	const [isOpenForm, setIsOpenForm] = useState(false);
-	const handleClose = () => setIsOpenForm(false);
+	const [isOpenEditForm, setIsOpenEditForm] = useState(false);
+	const [isOpenDeleteForm, setIsOpenDeleteForm] = useState(false);
+	const handleCloseEditForm = () => setIsOpenEditForm(false);
+	const handleCloseDeleteForm = () => setIsOpenDeleteForm(false);
 
 	const StyledPlayerItem = styled.div`
 		display: flex;
@@ -35,7 +37,14 @@ const PlayerItem = ({ player }: PlayerItem) => {
 
 	return (
 		<StyledPlayerItem>
-			<LinkButton onClick={() => setIsOpenForm(true)}>
+			{!team && (
+				<LinkButton
+					onClick={() => setIsOpenDeleteForm(true)}
+					primary={false}>
+					[DELETE]
+				</LinkButton>
+			)}
+			<LinkButton onClick={() => setIsOpenEditForm(true)}>
 				<StyledPlayerItem>
 					<div>First Name: {player.firstName}</div>
 					<div>Last Name: {player.lastName}</div>
@@ -44,11 +53,21 @@ const PlayerItem = ({ player }: PlayerItem) => {
 			</LinkButton>
 			<ModalPortal
 				title={"Edit player"}
-				isOpen={isOpenForm}
-				onClose={() => setIsOpenForm(false)}>
+				isOpen={isOpenEditForm}
+				onClose={() => setIsOpenEditForm(false)}>
 				<PlayerForm
 					mode='edit'
-					onClose={handleClose}
+					onClose={handleCloseEditForm}
+					player={player}
+				/>
+			</ModalPortal>
+			<ModalPortal
+				title={"Delete player"}
+				isOpen={isOpenDeleteForm}
+				onClose={() => setIsOpenDeleteForm(false)}>
+				<PlayerForm
+					mode='delete'
+					onClose={handleCloseDeleteForm}
 					player={player}
 				/>
 			</ModalPortal>
