@@ -25,7 +25,7 @@ export const ModalPortal = ({ title, isOpen, onClose, children }) => {
 		border: solid 3px black;
 		padding: 20px;
 		min-height: 400px;
-		max-width: 500px;
+		max-width: 700px;
 		width: 100%;
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	`;

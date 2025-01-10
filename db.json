@@ -1,93 +1,91 @@
 {
-  "players": [
-    {
-      "id": "d78b",
-      "firstName": "robert",
-      "lastName": "lewandowski",
-      "teamId": null
-    },
-    {
-      "id": "a0b9",
-      "firstName": "ROMEO",
-      "lastName": "JULIA",
-      "teamId": "1aec"
-    }
-  ],
-  "teams": [
-    {
-      "id": "1aec",
-      "name": "FC Barcelona",
-      "city": "Barcelona",
-      "startYear": 2021,
-      "players": [
-        {
-          "value": "a0b9",
-          "label": "ROMEO JULIA"
-        }
-      ]
-    },
-    {
-      "id": "a363",
-      "name": "FC TULIPAN",
-      "city": "Wroclaw",
-      "startYear": 2025,
-      "players": []
-    },
-    {
-      "id": "7cc7",
-      "name": "FC COS",
-      "city": "Witaj",
-      "startYear": 2021,
-      "players": []
-    },
-    {
-      "id": "3979",
-      "name": "dwa",
-      "city": "d",
-      "startYear": 2020,
-      "players": [
-        "d78b"
-      ]
-    },
-    {
-      "id": "40b7",
-      "name": "FC WITAJ",
-      "city": "Witanko",
-      "startYear": 2021,
-      "players": []
-    },
-    {
-      "id": "0068",
-      "name": "Piotr",
-      "city": "Wrocław",
-      "startYear": 2020,
-      "players": []
-    },
-    {
-      "id": "1edc",
-      "name": "Piotr",
-      "city": "Wrocław22",
-      "startYear": 2020,
-      "players": []
-    },
-    {
-      "id": "dea6",
-      "name": "NOWY",
-      "city": "REFRESH",
-      "startYear": 2021,
-      "players": []
-    }
-  ],
-  "games": [
-    {
-      "id": "1",
-      "date": "20/11/2024",
-      "homeTeamId": "1",
-      "awayTeamId": "2",
-      "city": "Madrid",
-      "homeTeamGoals": 2,
-      "awayTeamGoals": 2,
-      "timeInMinutes": 94
-    }
-  ]
+	"players": [
+		{
+			"id": "d78b",
+			"firstName": "robert",
+			"lastName": "lewandowski",
+			"teamId": null
+		},
+		{
+			"id": "a0b9",
+			"firstName": "ROMEO",
+			"lastName": "JULIA",
+			"teamId": "1aec"
+		}
+	],
+	"teams": [
+		{
+			"id": "1aec",
+			"name": "FC Barcelona",
+			"city": "Barcelona",
+			"startYear": 2021,
+			"players": [
+				{
+					"value": "a0b9",
+					"label": "ROMEO JULIA"
+				}
+			]
+		},
+		{
+			"id": "a363",
+			"name": "FC TULIPAN",
+			"city": "Wroclaw",
+			"startYear": 2025,
+			"players": []
+		},
+		{
+			"id": "7cc7",
+			"name": "FC COS",
+			"city": "Witaj",
+			"startYear": 2021,
+			"players": []
+		},
+		{
+			"id": "3979",
+			"name": "dwa",
+			"city": "d",
+			"startYear": 2020,
+			"players": ["d78b"]
+		},
+		{
+			"id": "40b7",
+			"name": "FC WITAJ",
+			"city": "Witanko",
+			"startYear": 2021,
+			"players": []
+		},
+		{
+			"id": "0068",
+			"name": "Piotr",
+			"city": "Wrocław",
+			"startYear": 2020,
+			"players": []
+		},
+		{
+			"id": "1edc",
+			"name": "Piotr",
+			"city": "Wrocław22",
+			"startYear": 2020,
+			"players": []
+		},
+		{
+			"id": "dea6",
+			"name": "NOWY",
+			"city": "REFRESH",
+			"startYear": 2021,
+			"players": []
+		}
+	],
+	"games": [
+		{
+			"id": "359e",
+			"homeTeam": "1aec",
+			"homeGoals": 2,
+			"awayGoals": 1,
+			"awayTeam": "a363",
+			"minutes": 90,
+			"location": "wroclaw",
+			"date": "2025-01-11"
+		}
+	]
 }

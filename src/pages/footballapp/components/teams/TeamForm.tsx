@@ -37,7 +37,7 @@ export const TeamForm = ({ mode, onClose, team = null }) => {
 		watch,
 	} = useForm<TeamRequest>({
 		defaultValues: {
-			players: [...team.players],
+			players: [...(team?.players || [])],
 		},
 	});
 
@@ -53,7 +53,7 @@ export const TeamForm = ({ mode, onClose, team = null }) => {
 	if (error) return "An error has occurred: " + error.message;
 	console.log(data);
 
-	const teamPlayers = [...data, ...team.players];
+	const teamPlayers = [...data, ...(team?.players || [])];
 
 	console.log(team);
 	console.log(teamPlayers);

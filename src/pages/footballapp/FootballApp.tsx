@@ -2,6 +2,7 @@ import { useState } from "react";
 import { LinkButton } from "../../components/Form/LinkButton";
 import { PlayerList } from "./components/players/PlayersList";
 import { TeamsList } from "./components/teams/TeamsList";
+import { GamesList } from "./components/games/GamesList";
 
 const FootballApp = () => {
 	const [activeOption, setActiveOption] = useState<string>("players");
@@ -32,6 +33,7 @@ const FootballApp = () => {
 			</div>
 			{activeOption === "players" && <PlayerList />}
 			{activeOption === "teams" && <TeamsList />}
+			{activeOption === "games" && <GamesList />}
 		</>
 	);
 };

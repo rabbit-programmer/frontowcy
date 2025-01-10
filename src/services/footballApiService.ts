@@ -1,3 +1,4 @@
+import { GameInterface, RequestGame } from "../interfaces/gameInterface";
 import { PlayerInterface, RequestPlayer } from "../interfaces/playerInterface";
 import { TeamInterface, TeamRequest } from "../interfaces/teamInterface";
 
@@ -125,7 +126,20 @@ class FootballApiService {
 		}
 	}
 	async getAllGames(): Promise<void> {}
-	async createGame(): Promise<void> {}
+
+	async createGame(game: RequestGame): Promise<GameInterface> {
+		try {
+			const response = await fetch(`${this.API_URL}/games`, {
+				method: "POST",
+				body: JSON.stringify(game),
+			});
+			
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
 	async editGame(): Promise<void> {}
 	private logApiError(e: Error) {
 		console.error(
