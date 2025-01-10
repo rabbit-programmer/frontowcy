@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ModalPortal } from "../../../../components/Portal/Portal";
-import { PlayerForm } from "./PlayerForm";
+import { TeamForm } from "./TeamForm";
 import { TeamItem } from "./TeamItem";
 import { LinkButton } from "../../../../components/Form/LinkButton";
 import { useQuery } from "@tanstack/react-query";
@@ -46,10 +46,10 @@ const TeamsList = () => {
 				</div>
 			</div>
 			<ModalPortal
-				title={"Add player"}
+				title={"Add team"}
 				isOpen={isOpenForm}
 				onClose={handleClose}>
-				<PlayerForm
+				<TeamForm
 					mode='create'
 					onClose={handleClose}
 				/>

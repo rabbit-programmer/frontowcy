@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { footballApiService } from "../../../../services/footballApiService";
-import { PlayerForm } from "./PlayerForm";
+import { TeamForm } from "./TeamForm";
 import { LinkButton } from "../../../../components/Form/LinkButton";
 import styled from "styled-components";
 import { ModalPortal } from "../../../../components/Portal/Portal";
@@ -41,23 +41,23 @@ const TeamItem = ({ team }: TeamItemProps) => {
 				</StyledPlayerItem>
 			</LinkButton>
 			<ModalPortal
-				title={"Edit player"}
+				title={"Edit team"}
 				isOpen={isOpenEditForm}
 				onClose={() => setIsOpenEditForm(false)}>
-				<PlayerForm
+				<TeamForm
 					mode='edit'
 					onClose={handleCloseEditForm}
-					player={team}
+					team={team}
 				/>
 			</ModalPortal>
 			<ModalPortal
 				title={"Delete player"}
 				isOpen={isOpenDeleteForm}
 				onClose={() => setIsOpenDeleteForm(false)}>
-				<PlayerForm
+				<TeamForm
 					mode='delete'
 					onClose={handleCloseDeleteForm}
-					player={team}
+					team={team}
 				/>
 			</ModalPortal>
 		</StyledPlayerItem>

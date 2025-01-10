@@ -37,6 +37,7 @@ const PlayerList = () => {
 							{data.map((player) => (
 								<li key={player.id}>
 									<div style={{ display: "flex" }}>
+										{/* <div>{player.firstName}</div> */}
 										<PlayerItem player={player} />
 									</div>
 								</li>

@@ -40,9 +40,7 @@ export const PlayerForm = ({ mode, onClose, player = null }) => {
 			await footballApiService.deletePlayer(data);
 		}
 
-		queryClient.invalidateQueries({
-			queryKey: [FootballCacheKeysEnum.LIST_PLAYERS],
-		});
+		queryClient.invalidateQueries();
 
 		onClose();
 	};

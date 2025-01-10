@@ -5,39 +5,38 @@ import { PlayerForm } from "./PlayerForm";
 import { LinkButton } from "../../../../components/Form/LinkButton";
 import styled from "styled-components";
 import { ModalPortal } from "../../../../components/Portal/Portal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface PlayerItem {
 	player: PlayerInterface;
 }
 
+const StyledPlayerItem = styled.div`
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: flex-start;
+`;
+
 const PlayerItem = ({ player }: PlayerItem) => {
-	let team = null;
-
-	if (player.teamId) {
-		const { data } = useQuery({
-			queryKey: [`teamData-${player.teamId}`],
-			queryFn: () => footballApiService.getTeamById(player.teamId),
-		});
-
-		team = data || "";
-	}
-
+	const [team, setTeam] = useState(null);
 	const [isOpenEditForm, setIsOpenEditForm] = useState(false);
 	const [isOpenDeleteForm, setIsOpenDeleteForm] = useState(false);
 	const handleCloseEditForm = () => setIsOpenEditForm(false);
 	const handleCloseDeleteForm = () => setIsOpenDeleteForm(false);
 
-	const StyledPlayerItem = styled.div`
-		display: flex;
-		flex-flow: column;
-		justify-content: center;
-		align-items: flex-start;
-	`;
+	const { isPending, error, data } = useQuery({
+		queryKey: [`teamData-${player?.teamId}`],
+		queryFn: () => footballApiService.getTeamById(player?.teamId || null),
+	});
+
+	if (isPending) return "Loading...";
+
+	if (error) return "An error has occurred: " + error.message;
 
 	return (
 		<StyledPlayerItem>
-			{!team && (
+			{!player?.teamId && (
 				<LinkButton
 					onClick={() => setIsOpenDeleteForm(true)}
 					primary={false}>
@@ -48,7 +47,7 @@ const PlayerItem = ({ player }: PlayerItem) => {
 				<StyledPlayerItem>
 					<div>First Name: {player.firstName}</div>
 					<div>Last Name: {player.lastName}</div>
-					<div>Team: {team?.name || "None"}</div>
+					<div>Team: {data?.name || "None"}</div>
 				</StyledPlayerItem>
 			</LinkButton>
 			<ModalPortal
