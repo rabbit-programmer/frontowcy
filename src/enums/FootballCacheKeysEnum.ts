@@ -4,6 +4,7 @@ enum FootballCacheKeysEnum {
 	LIST_TEAMS = "list-teams",
 	LIST_GAMES = "list-games",
 	LIST_PLAYERS_WITHOUT_TEAM = "list-players-without-team",
+	TOP_TEAM = "top-team",
 }
 
 export { FootballCacheKeysEnum };

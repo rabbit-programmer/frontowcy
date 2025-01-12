@@ -31,6 +31,13 @@ export const GameForm = ({ mode, onClose, game = null }) => {
 		}
 	`;
 
+	const { register, handleSubmit } = useForm<RequestGame>({
+		defaultValues: {
+			homeTeam: game?.homeTeam,
+			awayTeam: game?.awayTeam,
+		},
+	});
+
 	const queryClient = useQueryClient();
 	const { isPending, error, data } = useQuery({
 		queryKey: [FootballCacheKeysEnum.LIST_TEAMS],
@@ -41,12 +48,6 @@ export const GameForm = ({ mode, onClose, game = null }) => {
 
 	if (error) return "An error has occurred: " + error.message;
 
-	const { register, handleSubmit } = useForm<RequestGame>({
-		defaultValues: {
-			homeTeam: game?.homeTeam,
-			awayTeam: game?.awayTeam,
-		},
-	});
 	const onSubmit: SubmitHandler<RequestGame> = async (data) => {
 		if (mode === "create") {
 			await footballApiService.createGame(data);

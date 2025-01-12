@@ -2,6 +2,11 @@ import { GameInterface, RequestGame } from "../interfaces/gameInterface";
 import { PlayerInterface, RequestPlayer } from "../interfaces/playerInterface";
 import { TeamInterface, TeamRequest } from "../interfaces/teamInterface";
 
+type TopTeam = {
+	team: TeamInterface;
+	goals: number;
+};
+
 class FootballApiService {
 	private API_URL = "http://localhost:3000";
 
@@ -162,6 +167,71 @@ class FootballApiService {
 			throw new Error((e as Error).message);
 		}
 	}
+
+	getLastGame = (games: GameInterface[]): GameInterface | null =>
+		games.reduce(
+			(latest, game) =>
+				new Date(game.date) > new Date(latest.date) ? game : latest,
+			games[0]
+		);
+
+	countGamesByPeriod = (
+		games: GameInterface[],
+		period: string,
+		referenceDate: Date = new Date()
+	): number => {
+		return games.filter((game) => {
+			const gameDate = new Date(game.date);
+
+			if (period === "week") {
+				const weekStart = new Date(referenceDate);
+				weekStart.setDate(referenceDate.getDate() - referenceDate.getDay());
+				const weekEnd = new Date(weekStart);
+				weekEnd.setDate(weekEnd.getDate() + 6);
+				return gameDate >= weekStart && gameDate <= weekEnd;
+			}
+
+			if (period === "month") {
+				return (
+					gameDate.getFullYear() === referenceDate.getFullYear() &&
+					gameDate.getMonth() === referenceDate.getMonth()
+				);
+			}
+
+			if (period === "year") {
+				return gameDate.getFullYear() === referenceDate.getFullYear();
+			}
+
+			return false;
+		}).length;
+	};
+
+	getTopTeamsByGoals = async (): Promise<TopTeam[]> => {
+		const games = await this.getAllGames();
+		const teamGoals: Record<string, number> = {};
+
+		console.log(games);
+		games.forEach((game) => {
+			teamGoals[game.homeTeam] =
+				(teamGoals[game.homeTeam] || 0) + game.homeGoals;
+			teamGoals[game.awayTeam] =
+				(teamGoals[game.awayTeam] || 0) + game.awayGoals;
+		});
+
+		const topTeams = Object.entries(teamGoals)
+			.map(([teamId, goals]) => ({ teamId, goals }))
+			.sort((a, b) => b.goals - a.goals)
+			.slice(0, 3);
+
+		const teams = [];
+		for (const topTeam of topTeams) {
+			const team = await this.getTeamById(topTeam.teamId);
+			teams.push({ team, goals: topTeam.goals });
+		}
+
+		return teams;
+	};
+
 	private logApiError(e: Error) {
 		console.error(
 			`Problem with query, message: ${e.message}, 

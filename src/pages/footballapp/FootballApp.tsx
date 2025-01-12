@@ -3,6 +3,7 @@ import { LinkButton } from "../../components/Form/LinkButton";
 import { PlayerList } from "./components/players/PlayersList";
 import { TeamsList } from "./components/teams/TeamsList";
 import { GamesList } from "./components/games/GamesList";
+import { StatisticsList } from "./components/statistics/StatisticsList";
 
 const FootballApp = () => {
 	const [activeOption, setActiveOption] = useState<string>("players");
@@ -34,6 +35,7 @@ const FootballApp = () => {
 			{activeOption === "players" && <PlayerList />}
 			{activeOption === "teams" && <TeamsList />}
 			{activeOption === "games" && <GamesList />}
+			{activeOption === "statistics" && <StatisticsList />}
 		</>
 	);
 };
