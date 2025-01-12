@@ -161,11 +161,6 @@ export const GameForm = ({ mode, onClose, game = null }) => {
 				</div>
 			)}
 
-			{/* {mode === "delete" && (
-				<div className='field'>
-					Are you sure, to remove {player.firstName} {player.lastName}?
-				</div>
-			)} */}
 			<div className='actions'>
 				<LinkButton onClick={onClose}>Cancel</LinkButton>
 				<Button type='submit'>{mode === "delete" ? "Delete" : "Save"}</Button>
