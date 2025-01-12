@@ -5,13 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import { footballApiService } from "../../../../services/footballApiService";
 import { FootballCacheKeysEnum } from "../../../../enums/FootballCacheKeysEnum";
 import { GameForm } from "./GameForm";
+import { GameItem } from "./GameItem";
 
 const GamesList = () => {
 	const [isOpenForm, setIsOpenForm] = useState(false);
 	const handleClose = () => setIsOpenForm(false);
 	const { isPending, error, data } = useQuery({
-		queryKey: [FootballCacheKeysEnum.LIST_TEAMS],
-		queryFn: () => footballApiService.getAllTeams(),
+		queryKey: [FootballCacheKeysEnum.LIST_GAMES],
+		queryFn: () => footballApiService.getAllGames(),
 	});
 
 	if (isPending) return "Loading...";
@@ -33,10 +34,10 @@ const GamesList = () => {
 				<div className='description'>
 					<div className='description__data'>
 						<ul>
-							{data.map((team) => (
-								<li key={team.id}>
+							{data.map((game) => (
+								<li key={game.id}>
 									<div style={{ display: "flex" }}>
-										{/* <TeamItem team={team} /> */}
+										<GameItem game={game} />
 									</div>
 								</li>
 							))}

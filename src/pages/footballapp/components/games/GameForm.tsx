@@ -41,18 +41,19 @@ export const GameForm = ({ mode, onClose, game = null }) => {
 
 	if (error) return "An error has occurred: " + error.message;
 
-	const { register, handleSubmit } = useForm<RequestGame>();
+	const { register, handleSubmit } = useForm<RequestGame>({
+		defaultValues: {
+			homeTeam: game?.homeTeam,
+			awayTeam: game?.awayTeam,
+		},
+	});
 	const onSubmit: SubmitHandler<RequestGame> = async (data) => {
 		if (mode === "create") {
 			await footballApiService.createGame(data);
 		}
-		// if (mode === "edit") {
-		// 	await footballApiService.editPlayer(data);
-		// }
-
-		// if (mode === "delete") {
-		// 	await footballApiService.deletePlayer(data);
-		// }
+		if (mode === "edit") {
+			await footballApiService.editGame(data);
+		}
 
 		queryClient.invalidateQueries();
 

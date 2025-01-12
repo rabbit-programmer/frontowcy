@@ -125,7 +125,16 @@ class FootballApiService {
 			throw new Error((e as Error).message);
 		}
 	}
-	async getAllGames(): Promise<void> {}
+	async getAllGames(): Promise<GameInterface[]> {
+		try {
+			const response = await fetch(`${this.API_URL}/games`);
+			const games: GameInterface[] = await response.json();
+			return games;
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
 
 	async createGame(game: RequestGame): Promise<GameInterface> {
 		try {
@@ -133,14 +142,26 @@ class FootballApiService {
 				method: "POST",
 				body: JSON.stringify(game),
 			});
-			
+
 			return await response.json();
 		} catch (e: unknown) {
 			this.logApiError(e as Error);
 			throw new Error((e as Error).message);
 		}
 	}
-	async editGame(): Promise<void> {}
+	async editGame(game: RequestGame): Promise<GameInterface> {
+		try {
+			const response = await fetch(`${this.API_URL}/games/${game.id}`, {
+				method: "PATCH",
+				body: JSON.stringify(game),
+			});
+
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
 	private logApiError(e: Error) {
 		console.error(
 			`Problem with query, message: ${e.message}, 
