@@ -1,4 +1,18 @@
 {
+  "categories": [
+    {
+      "id": "cfb4",
+      "name": "Kolor",
+      "identifier": "color",
+      "position": 1
+    },
+    {
+      "id": "5d4b",
+      "name": "Dach",
+      "identifier": "roof",
+      "position": 2
+    }
+  ],
   "players": [
     {
       "id": "d78b",

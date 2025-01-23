@@ -2,7 +2,7 @@ enum GlobalMenuEnum {
 	CV,
 	STOPWATCH,
 	FOOTBALLAPP,
-	SERVICES,
+	CARSHOP,
 	CONTACT,
 }
 

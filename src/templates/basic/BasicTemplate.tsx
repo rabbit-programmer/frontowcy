@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store.ts";
 import { selectOption } from "../../reducers/globalMenuReducer.ts";
 import { GlobalMenuEnum } from "../../enums/GlobalMenuEnum.ts";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
 	children: any;
@@ -17,6 +18,7 @@ const BasicTemplate = ({ children }: Props) => {
 		(state: RootState) => state.globalMenuSelector.option
 	);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const github = ` 
  ██████  ██ ████████ ██   ██ ██    ██ ██████  
@@ -45,8 +47,11 @@ const BasicTemplate = ({ children }: Props) => {
 					FOOTBALAPP PROJECT
 				</Button>
 				<Button
-					isActive={option === GlobalMenuEnum.SERVICES}
-					onClick={() => dispatch(selectOption(GlobalMenuEnum.SERVICES))}>
+					isActive={option === GlobalMenuEnum.CARSHOP}
+					onClick={() => {
+						dispatch(selectOption(GlobalMenuEnum.CARSHOP));
+						navigate('/car-shop')
+					}}>
 					CARSHOP PROJECT
 				</Button>
 			</Header>
