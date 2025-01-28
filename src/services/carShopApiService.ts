@@ -1,10 +1,46 @@
 import { CategoryInterface } from "../interfaces/categoryInterface";
-import { GameInterface, RequestGame } from "../interfaces/gameInterface";
+import { ItemInterface } from "../interfaces/itemInterface";
 import { PlayerInterface, RequestPlayer } from "../interfaces/playerInterface";
-import { TeamInterface, TeamRequest } from "../interfaces/teamInterface";
 
 class CarShopApiService {
 	private API_URL = "http://localhost:3000";
+
+	async getAllItems(): Promise<ItemInterface[]> {
+		try {
+			const response = await fetch(`${this.API_URL}/items`);
+			const items: ItemInterface[] = await response.json();
+			return items;
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
+
+	async createItem(item: ItemInterface): Promise<void> {
+		try {
+			const response = await fetch(`${this.API_URL}/items`, {
+				method: "POST",
+				body: JSON.stringify(item),
+			});
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
+
+	async editItem(item: ItemInterface): Promise<void> {
+		try {
+			const response = await fetch(`${this.API_URL}/items/${item.id}`, {
+				method: "PATCH",
+				body: JSON.stringify(item),
+			});
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
 
 	async getAllCategories(): Promise<CategoryInterface[]> {
 		try {

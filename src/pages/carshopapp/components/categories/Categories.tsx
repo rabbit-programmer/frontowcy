@@ -6,7 +6,7 @@ import { Table } from "../../../../components/List/Table";
 import { LongContent } from "../../../../components/Content/LongContent";
 import { CategoryForm } from "./components/CategoryForm";
 import { carShopApiService } from "../../../../services/carShopApiService";
-import { CarShopCacheKeysEnum } from "../../../../enums/CarShopCacheKeysEnum copy";
+import { CarShopCacheKeysEnum } from "../../../../enums/CarShopCacheKeysEnum";
 import { CategoryItem } from "./components/CategoryItem";
 
 const Categories = () => {

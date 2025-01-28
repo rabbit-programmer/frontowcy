@@ -7,22 +7,25 @@ import { footballApiService } from "../../../../services/footballApiService";
 import { FootballCacheKeysEnum } from "../../../../enums/FootballCacheKeysEnum";
 import { Table } from "../../../../components/List/Table";
 import { LongContent } from "../../../../components/Content/LongContent";
+import { carShopApiService } from "../../../../services/carShopApiService";
+import { CarShopCacheKeysEnum } from "../../../../enums/CarShopCacheKeysEnum";
+import { Item } from "./components/Item";
+import { ItemForm } from "./components/ItemForm";
 
 const Items = () => {
 	const [isOpenForm, setIsOpenForm] = useState(false);
 	const handleClose = () => setIsOpenForm(false);
-	// const { isPending, error, data } = useQuery({
-	// 	queryKey: [FootballCacheKeysEnum.LIST_PLAYERS],
-	// 	queryFn: () => footballApiService.getAllPlayers(),
-	// });
+	const { isPending, error, data } = useQuery({
+		queryKey: [CarShopCacheKeysEnum.ITEMS],
+		queryFn: () => carShopApiService.getAllItems(),
+	});
 
-	// if (isPending) return "Loading...";
+	if (isPending) return "Loading...";
 
-	// if (error) return "An error has occurred: " + error.message;
+	if (error) return "An error has occurred: " + error.message;
 
 	return (
 		<LongContent>
-			{/* <div className='content__title'> */}
 			Items list
 			<LinkButton
 				onClick={() => {
@@ -33,14 +36,23 @@ const Items = () => {
 			{/* </div> */}
 			<Table>
 				<ul>
-					<li>Item nr1</li>
-					<li>Item nr2</li>
+					{data.map((item) => (
+						<Item
+							key={item.id}
+							item={item}
+						/>
+					))}
 				</ul>
 			</Table>
 			<ModalPortal
-				title={"Add category"}
+				title={"Add item"}
 				isOpen={isOpenForm}
-				onClose={handleClose}></ModalPortal>
+				onClose={handleClose}>
+				<ItemForm
+					mode='create'
+					onClose={handleClose}
+				/>
+			</ModalPortal>
 		</LongContent>
 	);
 };

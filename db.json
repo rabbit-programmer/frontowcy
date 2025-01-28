@@ -13,6 +13,15 @@
       "position": 2
     }
   ],
+  "items": [
+    {
+      "id": "bd3e",
+      "name": "Zielony",
+      "part": "2green2",
+      "price": 2000,
+      "categoryId": "5d4b"
+    }
+  ],
   "players": [
     {
       "id": "d78b",
