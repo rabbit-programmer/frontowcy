@@ -16,6 +16,21 @@ class CarShopApiService {
 		}
 	}
 
+	async getAllItemsWithCategoryId(
+		categoryId: string
+	): Promise<ItemInterface[]> {
+		try {
+			const response = await fetch(
+				`${this.API_URL}/items?categoryId=${categoryId}`
+			);
+			const items: ItemInterface[] = await response.json();
+			return items;
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
+
 	async createItem(item: ItemInterface): Promise<void> {
 		try {
 			const response = await fetch(`${this.API_URL}/items`, {
@@ -33,6 +48,19 @@ class CarShopApiService {
 		try {
 			const response = await fetch(`${this.API_URL}/items/${item.id}`, {
 				method: "PATCH",
+				body: JSON.stringify(item),
+			});
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
+
+	async deleteItem(item: ItemInterface): Promise<void> {
+		try {
+			const response = await fetch(`${this.API_URL}/items/${item.id}`, {
+				method: "DELETE",
 				body: JSON.stringify(item),
 			});
 			return await response.json();
@@ -82,11 +110,21 @@ class CarShopApiService {
 		}
 	}
 
-	async deletePlayer(player: RequestPlayer): Promise<PlayerInterface> {
+	async deleteCategory(category: CategoryInterface): Promise<void> {
 		try {
-			const response = await fetch(`${this.API_URL}/players/${player.id}`, {
-				method: "DELETE",
-			});
+			const response = await fetch(
+				`${this.API_URL}/categories/${category.id}`,
+				{
+					method: "DELETE",
+					body: JSON.stringify(category),
+				}
+			);
+
+			const items = await this.getAllItemsWithCategoryId(category?.id);
+			for (const item of items) {
+				await this.deleteItem(item);
+			}
+
 			return await response.json();
 		} catch (e: unknown) {
 			this.logApiError(e as Error);

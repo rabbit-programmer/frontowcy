@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { CategoryInterface } from "../../../../../interfaces/categoryInterface";
 import { LinkButton } from "../../../../../components/Form/LinkButton";
 import { TextInput } from "../../../../../components/Form/TextInput";
 import { Button } from "../../../../../components/Form/Button";
@@ -48,9 +47,9 @@ export const ItemForm = ({ mode, onClose, item = null }) => {
 			await carShopApiService.editItem(data);
 		}
 
-		// if (mode === "delete") {
-		// 	await footballApiService.deletePlayer(data);
-		// }
+		if (mode === "delete") {
+			await carShopApiService.deleteItem(data);
+		}
 
 		queryClient.invalidateQueries();
 
@@ -117,7 +116,7 @@ export const ItemForm = ({ mode, onClose, item = null }) => {
 				</div>
 			)}
 			{mode === "delete" && (
-				<div className='field'>Are you sure, to remove {category?.name}?</div>
+				<div className='field'>Are you sure, to remove {item?.name}?</div>
 			)}
 			<div className='actions'>
 				<LinkButton onClick={onClose}>Cancel</LinkButton>

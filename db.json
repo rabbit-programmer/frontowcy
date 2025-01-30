@@ -1,12 +1,6 @@
 {
   "categories": [
     {
-      "id": "cfb4",
-      "name": "Kolor",
-      "identifier": "color",
-      "position": 1
-    },
-    {
       "id": "5d4b",
       "name": "Dach",
       "identifier": "roof",
@@ -15,11 +9,11 @@
   ],
   "items": [
     {
-      "id": "bd3e",
-      "name": "Zielony",
-      "part": "2green2",
-      "price": 2000,
-      "categoryId": "5d4b"
+      "id": "6c1f",
+      "categoryId": "5d4b",
+      "name": "FC Barcelona",
+      "part": "green",
+      "price": 2000
     }
   ],
   "players": [

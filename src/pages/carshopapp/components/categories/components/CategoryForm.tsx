@@ -35,9 +35,9 @@ export const CategoryForm = ({ mode, onClose, category = null }) => {
 			await carShopApiService.editCategory(data);
 		}
 
-		// if (mode === "delete") {
-		// 	await footballApiService.deletePlayer(data);
-		// }
+		if (mode === "delete") {
+			await carShopApiService.deleteCategory(data);
+		}
 
 		queryClient.invalidateQueries();
 
@@ -93,7 +93,7 @@ export const CategoryForm = ({ mode, onClose, category = null }) => {
 				</div>
 			)}
 			{mode === "delete" && (
-				<div className='field'>Are you sure, to remove {category?.name}?</div>
+				<div className='field'>Are you sure, to remove {category?.name} with all connected items?</div>
 			)}
 			<div className='actions'>
 				<LinkButton onClick={onClose}>Cancel</LinkButton>
