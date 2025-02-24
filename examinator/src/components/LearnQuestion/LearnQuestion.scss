@@ -1,0 +1,10 @@
+.learn-question-item {
+    display: flex;
+    flex-flow: column;
+    padding: 15px;
+    border: solid 1px black;
+
+    & + & {
+        margin-top: 20px;
+    }
+}

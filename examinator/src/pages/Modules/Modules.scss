@@ -1,0 +1,8 @@
+.modules-list {
+  &__module + &__module {
+    margin-top: 30px;
+  }
+  &__modules:last-child {
+    margin-bottom: 40px;
+  }
+}
