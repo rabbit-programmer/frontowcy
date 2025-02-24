@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CarShopApp } from "./pages/carshopapp/CarShopApp";
 import { Categories } from "./pages/carshopapp/components/categories/Categories";
 import { Items } from "./pages/carshopapp/components/items/Items";
+import { Store } from "./pages/carshopapp/components/items/components/Store";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,14 @@ const App = () => {
 						<Route
 							path='/car-shop/items'
 							element={<Items />}
+						/>
+						<Route
+							path='/car-shop/buy/*'
+							element={<Store />}
+						/>
+						<Route
+							path='/car-shop/*'
+							element={<div>Not found</div>}
 						/>
 					</Routes>
 					<Routes>

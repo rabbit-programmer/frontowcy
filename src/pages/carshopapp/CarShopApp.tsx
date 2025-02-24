@@ -1,8 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { LinkButton } from "../../components/Form/LinkButton";
+import { useQuery } from "@tanstack/react-query";
+import { CarShopCacheKeysEnum } from "../../enums/CarShopCacheKeysEnum";
+import { carShopApiService } from "../../services/carShopApiService";
+import getStoreLinkIdentifier from "./helpers/getStoreLinkIdentifier";
 
 const CarShopApp = () => {
 	const navigate = useNavigate();
+
+	const { isPending, error, data } = useQuery({
+		queryKey: [CarShopCacheKeysEnum.CATEGORIES],
+		queryFn: () => carShopApiService.getAllCategories(),
+	});
+
+	if (isPending) return "Loading...";
+	if (error) return "An error has occurred: " + error.message;
 
 	return (
 		<>
@@ -19,7 +31,7 @@ const CarShopApp = () => {
 				</LinkButton>
 				<LinkButton
 					primary={false}
-					onClick={() => navigate("buy")}>
+					onClick={() => navigate(`buy/${getStoreLinkIdentifier(data)}`)}>
 					<div className='menu'>Buy a car</div>
 				</LinkButton>
 			</div>

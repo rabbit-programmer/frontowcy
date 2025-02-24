@@ -5,6 +5,21 @@ import { PlayerInterface, RequestPlayer } from "../interfaces/playerInterface";
 class CarShopApiService {
 	private API_URL = "http://localhost:3000";
 
+	async buyCart(): Promise<void> {
+		try {
+			const response = await fetch(`${this.API_URL}/store`, {
+				method: "POST",
+				body: JSON.stringify({
+					buyDate: new Date(),
+					store: localStorage.getItem("chooseOptions"),
+				}),
+			});
+			return await response.json();
+		} catch (e: unknown) {
+			this.logApiError(e as Error);
+			throw new Error((e as Error).message);
+		}
+	}
 	async getAllItems(): Promise<ItemInterface[]> {
 		try {
 			const response = await fetch(`${this.API_URL}/items`);
@@ -72,7 +87,7 @@ class CarShopApiService {
 
 	async getAllCategories(): Promise<CategoryInterface[]> {
 		try {
-			const response = await fetch(`${this.API_URL}/categories`);
+			const response = await fetch(`${this.API_URL}/categories?_sort=position`);
 			const categories: CategoryInterface[] = await response.json();
 			return categories;
 		} catch (e: unknown) {

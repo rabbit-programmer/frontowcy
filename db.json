@@ -1,19 +1,78 @@
 {
+  "store": [
+    {
+      "id": "e0eb",
+      "buyDate": "2025-02-24T22:03:21.055Z",
+      "store": "[{\"id\":\"4f77\",\"categoryId\":\"61fe\",\"name\":\"GREEN\",\"part\":\"green\",\"price\":800},{\"id\":\"38b0\",\"categoryId\":\"5d4b\",\"name\":\"OPEN\",\"part\":\"open\",\"price\":2000},{\"id\":\"fe7c\",\"categoryId\":\"afd9\",\"name\":\"winter\",\"part\":\"winter\",\"price\":800}]"
+    },
+    {
+      "id": "6bc2",
+      "buyDate": "2025-02-24T22:03:21.059Z",
+      "store": "[{\"id\":\"4f77\",\"categoryId\":\"61fe\",\"name\":\"GREEN\",\"part\":\"green\",\"price\":800},{\"id\":\"38b0\",\"categoryId\":\"5d4b\",\"name\":\"OPEN\",\"part\":\"open\",\"price\":2000},{\"id\":\"fe7c\",\"categoryId\":\"afd9\",\"name\":\"winter\",\"part\":\"winter\",\"price\":800}]"
+    }
+  ],
   "categories": [
     {
       "id": "5d4b",
       "name": "Dach",
       "identifier": "roof",
       "position": 2
+    },
+    {
+      "id": "61fe",
+      "name": "COLOR",
+      "identifier": "color",
+      "position": 1
+    },
+    {
+      "id": "afd9",
+      "name": "TIRES",
+      "identifier": "tires",
+      "position": 3
     }
   ],
   "items": [
     {
-      "id": "6c1f",
+      "id": "38b0",
       "categoryId": "5d4b",
-      "name": "FC Barcelona",
-      "part": "green",
+      "name": "OPEN",
+      "part": "open",
       "price": 2000
+    },
+    {
+      "id": "4f77",
+      "categoryId": "61fe",
+      "name": "GREEN",
+      "part": "green",
+      "price": 800
+    },
+    {
+      "id": "3454",
+      "categoryId": "61fe",
+      "name": "blue",
+      "part": "blue",
+      "price": 100
+    },
+    {
+      "id": "fe7c",
+      "categoryId": "afd9",
+      "name": "winter",
+      "part": "winter",
+      "price": 800
+    },
+    {
+      "id": "0bac",
+      "categoryId": "afd9",
+      "name": "summer",
+      "part": "summer",
+      "price": 800
+    },
+    {
+      "id": "9480",
+      "categoryId": "afd9",
+      "name": "all_SEASON",
+      "part": "ALL_SEASON",
+      "price": 600
     }
   ],
   "players": [
